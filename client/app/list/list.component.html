@@ -9,13 +9,14 @@
           <span class="input-group-btn">
             <a [routerLink]="['/cadastro']" class="btn btn-primary">Nova foto</a>
           </span>
+          <input #typedText (keyup)="0" class="form-control" placeholder="Filtrar por titulo">
         </div>
       </form>
     </div>
   </div>
   <br>
   <div class="row">
-    <painel *ngFor="let foto of fotos" titulo={{foto.titulo}} class="col-md-2">
+    <painel *ngFor="let foto of fotos | filterByTitle: typedText.value" titulo="{{foto.titulo}}" class="col-md-2">
       <foto url="{{foto.url}}" title="{{foto.titulo}}"></foto>
     </painel>
   </div>
