@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { ListComponent } from './list/list.component';
 import { routing } from './app.routes';
 import 'rxjs/add/operator/map';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import 'rxjs/add/operator/map';
     FotoModule,
     HttpModule,
     PainelModule,
-    routing
+    routing,
+    FormsModule
   ],
   declarations: [ AppComponent, RegisterComponent, ListComponent ],
   bootstrap: [ AppComponent ]
