@@ -23,7 +23,6 @@ export class RegisterComponent {
     headers.append('Content-Type', 'application/json');
     this.http.post('v1/fotos', JSON.stringify(this.foto), { headers: headers}).subscribe(() => {
       this.foto = new FotoComponent();
-      console.log('Foto salva com sucesso');
     });
   }
 }
