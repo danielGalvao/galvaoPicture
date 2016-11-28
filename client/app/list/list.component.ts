@@ -18,4 +18,8 @@ export class ListComponent {
           erro => console.log(erro)
       );
   }
+
+  remove(foto) {
+    console.log(foto);
+  }
 }
