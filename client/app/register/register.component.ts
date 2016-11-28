@@ -1,28 +1,33 @@
 import { Component } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
 import { Http, Headers } from '@angular/http';
+import { FotoService } from '../foto/foto.service';
 
 @Component({
   moduleId: module.id,
   selector: 'register',
   templateUrl: './register.component.html'
-
 })
+
 export class RegisterComponent {
 
   foto: FotoComponent = new FotoComponent();
-  http: Http;
+  service: FotoService;
 
-  constructor(http: Http) {
-      this.http = http;
+  constructor(service: FotoService) {
+    this.service = service;
   }
 
-  addFoto() {
+  addFoto(event) {
     event.preventDefault();
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    this.http.post('v1/fotos', JSON.stringify(this.foto), { headers: headers}).subscribe(() => {
-      this.foto = new FotoComponent();
-    });
+    this.foto = new FotoComponent();
+
+    this.service.insert(this.foto)
+      .subscribe(() => {
+          this.foto = new FotoComponent();
+          console.log('Foto salva com sucesso');
+      }, erro => {
+          console.log(erro);
+      });
   }
 }
