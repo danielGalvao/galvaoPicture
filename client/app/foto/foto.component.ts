@@ -12,4 +12,5 @@ export class FotoComponent {
   @Input() titulo;
   @Input() url;
   @Input() descricao;
+  _id: string;
 }

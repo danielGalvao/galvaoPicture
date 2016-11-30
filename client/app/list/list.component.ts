@@ -10,9 +10,11 @@ import { FotoService } from '../foto/foto.service';
 export class ListComponent {
 
   fotos: Object[] = [];
+  service: FotoService;
 
   constructor(service: FotoService) {
-    service.list()
+    this.service = service;
+    this.service.list()
       .subscribe(
           fotos => this.fotos = fotos,
           erro => console.log(erro)
@@ -20,6 +22,14 @@ export class ListComponent {
   }
 
   remove(foto) {
-    console.log(foto);
+    this.service.remove(foto)
+      .subscribe(() => {
+        let newFotos = this.fotos.slice(0);
+        let index = newFotos.indexOf(foto);
+        newFotos.splice(index, 1);
+        this.fotos = newFotos;
+      },
+      erro => console.log(erro)
+    );
   }
 }
