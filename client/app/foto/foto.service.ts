@@ -22,6 +22,7 @@ export class FotoService {
   }
 
   insert(foto: FotoComponent): Observable<Response> {
+    console.log(JSON.stringify(foto));
     return this.http.post(this.url, JSON.stringify(foto), { headers: this.headers});
   }
 
