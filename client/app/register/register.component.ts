@@ -20,7 +20,6 @@ export class RegisterComponent {
 
   addFoto(event) {
     event.preventDefault();
-    console.log(this.foto);
     this.service.insert(this.foto)
       .subscribe(() => {
           this.foto = new FotoComponent();
