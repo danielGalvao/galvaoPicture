@@ -25,8 +25,12 @@ export class FotoService {
     return this.http.post(this.url, JSON.stringify(foto), { headers: this.headers});
   }
 
-  remove(foto: FotoComponent) {
+  remove(foto: FotoComponent): Observable<Response> {
     return this.http.delete(this.url+'/'+foto._id);
+  }
+
+  getById(id: string): Observable<FotoComponent> {
+    return this.http.get(this.url+'/'+id).map(res => res.json());
   }
 
 }
