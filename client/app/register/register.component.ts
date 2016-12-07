@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FotoService } from '../foto/foto.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -16,10 +16,13 @@ export class RegisterComponent {
   service: FotoService;
   meuForm: FormGroup;
   route: ActivatedRoute;
+  router: Router;
+  mensagem: string = '';
 
-  constructor(service: FotoService, fb: FormBuilder, route: ActivatedRoute) {
+  constructor(service: FotoService, fb: FormBuilder, route: ActivatedRoute, router:Router) {
     this.service = service;
     this.route = route;
+    this.router = router;
     this.route.params.subscribe(params => {
       let id = params['id'];
       if(id) {
@@ -38,9 +41,11 @@ export class RegisterComponent {
   addFoto(event) {
     event.preventDefault();
     this.service.insert(this.foto)
-      .subscribe(() => {
+      .subscribe(res => {
           this.meuForm.reset();
-          console.log('Foto salva com sucesso');
+          this.foto = new FotoComponent();
+          this.mensagem = res.mensagem;
+          if(!res.inclusao) this.router.navigate(['']);
       }, erro => {
           console.log(erro);
       });

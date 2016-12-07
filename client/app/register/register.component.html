@@ -1,5 +1,6 @@
 <div class="container">
   <h1>{{foto.titulo}}</h1>
+    <p *ngIf="mensagem.length" class="alert alert-info">{{mensagem}}</p>
     <form [formGroup]="meuForm" class="row" (submit)="addFoto($event)">
         <div class="col-md-6">
             <div class="form-group">
