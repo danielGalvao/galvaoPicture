@@ -44,18 +44,16 @@ export class FotoService {
 }
 
 export class registerMsg {
-  private mensagem: string;
-  private inclusao: boolean;
 
-  constructor(mensagem: string, inclusao: boolean) {
-    this.mensagem = mensagem;
-    this.inclusao = inclusao;
+  constructor(private _mensagem: string, private _inclusao: boolean) {
+    this._mensagem = _mensagem;
+    this._inclusao = _inclusao;
   }
 
-   public getMsg() {
-    return this.mensagem;
+   get mensagem(): string {
+    return this._mensagem;
   }
-  public isAdd() {
-    return this.inclusao;
+  get inclusao(): boolean {
+    return this._inclusao;
   }
 }

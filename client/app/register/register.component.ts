@@ -44,8 +44,8 @@ export class RegisterComponent {
       .subscribe(res => {
           this.meuForm.reset();
           this.foto = new FotoComponent();
-          this.mensagem = res.getMsg();
-          if(!res.isAdd()) this.router.navigate(['']);
+          this.mensagem = res.mensagem;
+          if(!res.inclusao) this.router.navigate(['']);
       }, erro => {
           console.log(erro);
       });
