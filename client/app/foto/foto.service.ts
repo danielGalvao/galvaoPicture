@@ -21,15 +21,15 @@ export class FotoService {
     return this.http.get(this.url).map(res => res.json());
   }
 
-  insert(foto: FotoComponent): Observable<any> {
+  insert(foto: FotoComponent): Observable<registerMsg> {
     if(foto._id) {
       return this.http
             .put(this.url+'/'+foto._id, JSON.stringify(foto), { headers: this.headers})
-            .map(() => ({mensagem: 'Foto alterado com sucesso!', inclusao: false}));
+            .map(() => new registerMsg('Foto alterada com sucesso!', false));
     } else {
       return this.http
             .post(this.url, JSON.stringify(foto), { headers: this.headers})
-            .map(() => ({mensagem: 'Foto incluída com sucesso!', inclusao: true}));
+            .map(() => (new registerMsg('Foto incluida com sucesso!', true));
     }
   }
 
@@ -41,4 +41,14 @@ export class FotoService {
     return this.http.get(this.url+'/'+id).map(res => res.json());
   }
 
+}
+
+export class registerMsg {
+  mensagem: string;
+  inclusao: boolean;
+
+  constructor(mensagem: string, inclusao: boolean) {
+    this.mensagem = mensagem;
+    this.inclusao = inclusao;
+  }
 }
