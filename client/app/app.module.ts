@@ -20,7 +20,7 @@ import { ButtonModule } from './button/button.module';
     routing,
     FormsModule,
     ReactiveFormsModule,
-    ButtonCompoent
+    ButtonModule
   ],
   declarations: [ AppComponent, RegisterComponent, ListComponent ],
   bootstrap: [ AppComponent ]

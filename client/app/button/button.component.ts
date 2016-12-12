@@ -1,12 +1,13 @@
-import { Component, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-@component({
-  selecton: 'btn',
+@Component({
+  moduleId: module.id,
+  selector: 'btn',
   templateUrl: './button.component.html'
 })
 
-class ButtonComponent {
-  
+export class ButtonComponent {
+
   @Input() nome: string = 'Ok';
   @Input() estilo: string = 'btn-default';
   @Input() tipo: string = 'button';
