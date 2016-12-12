@@ -9,6 +9,7 @@ import { ListComponent } from './list/list.component';
 import { routing } from './app.routes';
 import 'rxjs/add/operator/map';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from './button/button.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PainelModule,
     routing,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonCompoent
   ],
   declarations: [ AppComponent, RegisterComponent, ListComponent ],
   bootstrap: [ AppComponent ]
