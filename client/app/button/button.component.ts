@@ -13,7 +13,7 @@ export class ButtonComponent {
   @Input() tipo: string = 'button';
   @Input() desable: boolean = false;
   @Output() action = new EventEmitter();
-  @Input() confirmation = boolean;
+  @Input() confirmation: boolean;
 
   execAction() {
     if(this.confirmation) {
