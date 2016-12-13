@@ -13,10 +13,15 @@ export class ButtonComponent {
   @Input() tipo: string = 'button';
   @Input() desable: boolean = false;
   @Output() action = new EventEmitter();
+  @Input() confirmation = boolean;
 
   execAction() {
-     if(confirm('Deseja realmente excluir?')) {
-      this.action.emit(null);
-     }
+    if(this.confirmation) {
+      if(confirm('Deseja realmente excluir?')) {
+        this.action.emit(null);
+      }
+      return;
+    }
+    this.action.emit(null);
   }
 }
